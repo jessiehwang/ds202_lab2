@@ -4,10 +4,13 @@ author: "Hanying Shen"
 date: "9/5/2019"
 output: html_document
 ---
+Hanying Shen, GitHub username: hshen0422
+new file upload, commit ID:bc15493c0504e0e14b93a44f29e886358343ab95
+Yes, I am able to do so without error. 
+My partner and I had a difficult time when we were trying to use Git push to Git Hub. It always shows ! [rejected]        master -> master (non-fast-forward) error: failed to push some refs to 'https://github.com/jessiehwang/ds202_lab1.git' 
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
-khbkh
-```{R}
-```
+
+
