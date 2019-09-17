@@ -1,0 +1,29 @@
+---
+title: "Ds202 _lab 2"
+author: "SIjie Huang"
+date: "September 17, 2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+```{R}
+choco <- read.csv("https://raw.githubusercontent.com/lbchu/ds202_labs/master/choco.csv")
+head(choco)
+```
+
+##Question set(Individual)
+1.The rating are basically normal distributed but the plot has skewed to the left and has 2 outlier which are 5.
+```{R}
+hist(choco$Rating,breaks=6)
+```
+2.From the scatterplot we can see that the with the cocoa percentage become higher the Rating didn't become higher. The rating are normal distributed.
+```{R}
+plot(choco$Rating,choco$Cocoa.Pct)
+```
+3.The class of the company location is factor.
+Factors are stored as number in levels . If you are dealing with categorical data, storing it as a factor save lot of memory.
+```{R}
+class(choco$Company.Location)
+```
