@@ -12,37 +12,63 @@ knitr::opts_chunk$set(echo = TRUE)
 ## Question set(team)
 
 ```{R}
+choco <- read.csv("https://raw.githubusercontent.com/lbchu/ds202_labs/master/choco.csv")
+head(choco)
+#example
 plot(choco$Rating,choco$Cocoa.Pct, xlab = "Ratings", ylab = "Cocoa Percentage", pch = 2, cex=2) 
 # creates a plot with Ratings on x-axis and Cocoa Percentage of y-axis. The symbol of points is set to be a triangle (pch=2) and the size of the points is adjusted to be larger (cex=2). 
+
 ```
+
 ```{R}
 recent_rating = choco[choco$Review.Date>2011,]
-
+#purpose:recent_rating contains rows which has the review date after 2011 in choco
 unique(recent_rating$Company.Location) # NOTICE: how many countries are listed but how many levels are there? 
-
+# 51 countries are listed but 61 levels are there.
+# The unique function removed  duplicated elements or rows.
 recent_rating$Company.Location = droplevels(recent_rating$Company.Location)
-
+# It drops the unused level of company location in recent_rating.
+# The droplevels function is used to drop unused levels from a factor(s) in a data frame.
 head(recent_rating)
-
+# It shows the first 6 rows with all columns of recent_rating data frame.
+# The head function returns the first parts of a vector, matrix, table, data frame or function.
 cross_table = table(recent_rating$Review.Date,recent_rating$Company.Location)
 cross_table
-
+# It shows the table with rows of review date and columns of company location. It counts how many times the company location appears in the specific review date
+# The table function uses the cross-classifying factors to build a contingency table of the counts at each combination of factor levels.
 which(cross_table[1,]!=0 & cross_table[2,]!=0 & cross_table[3,]!=0 & cross_table[4,]!=0 & cross_table[5,]!=0)
 
 france_recent = subset(recent_rating,Company.Location =='France')
+# france_recent shows the recent_rating data frame which meet the condition of company location in France
+# The subset fuction returns subsets of vectors, matrices or data frames which meet conditions.
 uk_recent = subset(recent_rating,Company.Location =='U.K.')
+# uk_recent shows the recent_rating data frame which meet the condition of company location in U.K.
 germany_recent = subset(recent_rating,Company.Location=='Germany')
+# germany_recent shows the recent_rating data frame which meet the condition of company location in Germany
 
 par(mfrow=c(2,2))
+# generate a 2*2 matrix of pictures
+# The function par can be used to set or query graphical parameters.
 color1 = ifelse(france_recent$Rating >median(france_recent$Rating), 'blue', 'green')
+# It returns blue color when the Rating of france_recent is greater than the median of the rating.Otherwise, it returns green color.
+# The function ifelse returns a value with the same shape as test which is filled with elements selected from either yes or no depending on whether the element of test is TRUE or FALSE.
 plot(france_recent$Cocoa.Pct ~ france_recent$Review.Date,ylim=c(50,90),col=color1,pch=18,cex=1.5,xlab="Review Date", ylab= "Cocoa Percentage", main= "France") 
+# It creates a plot with review date in france_recent on x-axis and Cocoa Percentage in france_recent of y-axis.The y-axis limit is from 50 to 90(ylim=c(50,90)), the color of the plot is defined in color1,the symbol of points is set to be a diamond (pch=18) ,the size of the points is adjusted to be larger (cex=1.5),the x-axis label is "Review Date,the y-axis label is "Cocoa Percentage" and the main title of the plot is "France".
 legend('bottomright',legend=c('High Rating', 'Low Rating'),col=c('blue','green'),pch=18)
-
+# It creates a note showing colors and what they are standing for at the bottomright.The text of the legend are "High Rating" and "Low Rating" and the colors of points beside the legend text are blue and green.
+# The legend function can be used to add legends to plots. 
 color2 = ifelse(uk_recent$Rating >median(uk_recent$Rating), 'purple', 'red')
+# It returns purple color when the Rating of uk_recent is greater than the median of the rating.Otherwise, it returns red color.
 plot(uk_recent$Cocoa.Pct ~ uk_recent$Review.Date,ylim=c(50,90),col=color2,pch=18,cex=1.5, xlab="Review Date", ylab= "Cocoa Percentage", main= "UK")
+# It creates a plot with review date in uk_recent on x-axis and Cocoa Percentage in uk_recent of y-axis.The y-axis limit is from 50 to 90(ylim=c(50,90)), the color of the plot is defined in color2,the symbol of points is set to be a diamond (pch=18) ,the size of the points is adjusted to be larger (cex=1.5),the x-axis label is "Review Date,the y-axis label is "Cocoa Percentage" and the main title of the plot is "UK".
 legend('bottomright',legend=c('High Rating', 'Low Rating'),col=c('purple','red'),pch=18)
+# It creates a note showing colors and what they are standing for at the bottomright.The text of the legend are "High Rating" and "Low Rating" and the colors of points beside the legend text are purple and red.
 
 color3 = ifelse(germany_recent$Rating > median(germany_recent$Rating), 'orange', 'yellow')
+# It returns orange color when the Rating of germany_recent is greater than the median of the rating.Otherwise, it returns yellow color.
 plot(germany_recent$Cocoa.Pct ~ germany_recent$Review.Date,ylim=c(50,90),col=color3,pch=18,cex=1.5,xlab="Review Date", ylab= "Cocoa Percentage", main= "Germany") 
+# It creates a plot with review date in germany_recent on x-axis and Cocoa Percentage in germany_recent of y-axis.The y-axis limit is from 50 to 90(ylim=c(50,90)), the color of the plot is defined in color3,the symbol of points is set to be a diamond (pch=18) ,the size of the points is adjusted to be larger (cex=1.5),the x-axis label is "Review Date,the y-axis label is "Cocoa Percentage" and the main title of the plot is "Germany".
 legend('bottomright',legend=c('High Rating', 'Low Rating'),col=c('orange','yellow'),pch=18)
+# It creates a note showing colors and what they are standing for at the bottomright.The text of the legend are "High Rating" and "Low Rating" and the colors of points beside the legend text are orange and yellow.
 ```
+
