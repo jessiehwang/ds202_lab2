@@ -9,51 +9,18 @@ Question set (individual)
 For each of the questions below provide at least one graphic as a basis for your answer.
 
 How are ratings distributed? Don’t forget to mention outliers, if there are any.
+```{r}
+
+```
 Do ratings depend on the cacao percentage of a chocolate bar?
+```{r}
+
+```
+
 What class is the variable representing company locations? How is this different from a ‘character’ variable? (You do not need to produce a graphic for this question.)
-
-2 . Click Zoom on the Rstudio window (under Plots) to see the plot more clearly. How do you think the plot produced from the code above can be improved? Recommend at least one possible improvement.
-
-Firstly, we can make the legend smaller, so that the box will not be partially overlapped with the point. Secondly, we can change the symbol of points to be different shapes instead of all in diamond, so that each plot will be more distinguish.
-
-3 . How does the number of ratings (not the actual value of the rating) depend on the year? Use graphics to answer this question.
-
 ```{r}
-t<-table(choco$Rating,choco$Review.Date)
-tab<-colSums(t)
-t1<-data.frame(tab)
-year=seq(2006,2017,1)
-plot(year,t1$tab,xlab="year",ylab="number of rating",xlim=c(2006,2018))
+
+
 ```
-
-From the graph, we can learn that with the time goes, the number of rating increases. 
-
-4 . How do ratings compare across different company locations? Focus on the three locations with the most ratings. Hint: the function  sort() might come in handy here.
-
-```{r}
-t<-table(choco$Rating,choco$Company.Location)
-tab2<-colSums(t2)
-t2<-data.frame(tab)
-year=seq(2006,2017,1)
-plot(year,t1$tab,xlab="year",ylab="number of rating",xlim=c(2006,2018))
-
-t2<-table(choco$Rating,choco$Company.Location)
-tab1<-colSums(t2)
-sort(tab1,decreasing = TRUE)
-con<-cbind(t2[,"U.S.A."],t2[,"France"],t2[,"Canada"])
-con<-data.frame(con)
-ra<-sort(unique(choco$Rating),decreasing=FALSE)
-par(mfrow=c(2,2))
-plot(ra,con$X1,pch=10,col='blue',xlim=c(1,5),xlab="rating",ylab='USA')
-plot(ra,con$X2,pch=2,col='orange',xlab="rating",ylab='France')
-plot(ra,con$X3,pch=18,col='red',xlab="rating",ylab='Canada')
-```
-The three locations with the most ratings are the U.S.A, France, and Canada. Based on the plots we get, the common trend they all share is that most rating scores are spread among 2-4, and mainly at 3. 
-
-5 . Brainstorm and write down an interesting question that can be answer from the dataset. The question should not duplicate the questions above.
-
-What is the relationship between the specific been origin and rating?
-
-6 . Bonus points (optional): Answer the question from the dataset.
 
 
