@@ -8,19 +8,22 @@ Question set (individual)
 
 For each of the questions below provide at least one graphic as a basis for your answer.
 
-How are ratings distributed? Don’t forget to mention outliers, if there are any.
+1. How are ratings distributed? Don’t forget to mention outliers, if there are any.
 ```{r}
-
+choco <- read.csv("https://raw.githubusercontent.com/lbchu/ds202_labs/master/choco.csv")
+head(choco)
 ```
-Do ratings depend on the cacao percentage of a chocolate bar?
 ```{r}
-
+hist(choco$Rating, breaks = 10)
 ```
-
-What class is the variable representing company locations? How is this different from a ‘character’ variable? (You do not need to produce a graphic for this question.)
+2. Do ratings depend on the cacao percentage of a chocolate bar?
 ```{r}
-
-
+plot(choco$Cocoa.Pct, choco$Rating)
 ```
+No, ratings does not depend on the cacao percentage of a chocolate bar from the chart above.
 
-
+3. What class is the variable representing company locations? How is this different from a ‘character’ variable? (You do not need to produce a graphic for this question.)
+```{r}
+class(choco$Company.Location)
+```
+The class of company locations is factor. A factor variable is the type vector contains a set of numeric codes with character-valued levels, and the character variable builts in character vectors are letters and LETTERS which provide the 26 lower (and upper) case letters, respecitively. 
