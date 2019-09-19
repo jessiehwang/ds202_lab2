@@ -37,6 +37,7 @@ cross_table
 # It shows the table with rows of review date and columns of company location. It counts how many times the company location appears in the specific review date
 # The table function uses the cross-classifying factors to build a contingency table of the counts at each combination of factor levels.
 which(cross_table[1,]!=0 & cross_table[2,]!=0 & cross_table[3,]!=0 & cross_table[4,]!=0 & cross_table[5,]!=0)
+# It identify all the countries which are in row 1, row 2, row 3, row 4, and row 5 have values not equal to 0. So it shows all the company locations which have review date from 2017 to 2017 with their index number.
 
 france_recent = subset(recent_rating,Company.Location =='France')
 # france_recent shows the recent_rating data frame which meet the condition of company location in France

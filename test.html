@@ -507,7 +507,9 @@ cross_table</code></pre>
 which(cross_table[1,]!=0 &amp; cross_table[2,]!=0 &amp; cross_table[3,]!=0 &amp; cross_table[4,]!=0 &amp; cross_table[5,]!=0)</code></pre>
 <pre><code>## Australia    Canada   Denmark    France   Germany      U.K.    U.S.A. 
 ##         2         6        11        15        16        50        51</code></pre>
-<pre class="r"><code>france_recent = subset(recent_rating,Company.Location =='France')
+<pre class="r"><code># It identify all the countries which are in row 1, row 2, row 3, row 4, and row 5 have values not equal to 0. So it shows all the company locations which have review date from 2017 to 2017 with their index number.
+
+france_recent = subset(recent_rating,Company.Location =='France')
 # france_recent shows the recent_rating data frame which meet the condition of company location in France
 # The subset fuction returns subsets of vectors, matrices or data frames which meet conditions.
 uk_recent = subset(recent_rating,Company.Location =='U.K.')
