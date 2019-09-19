@@ -20,7 +20,7 @@ hist(choco$Rating,breaks=6)
 ```
 2.From the scatterplot we can see that the with the cocoa percentage become higher the Rating didn't become higher. The rating are normal distributed.
 ```{R}
-plot(choco$Rating,choco$Cocoa.Pct)
+plot(choco$Cocoa.Pct,choco$Rating)
 ```
 3.The class of the company location is factor.
 Factors are stored as number in levels . If you are dealing with categorical data, storing it as a factor save lot of memory.
